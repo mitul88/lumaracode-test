@@ -4,6 +4,7 @@ import { FaHome, FaList, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
 import { SiSimpleanalytics } from "react-icons/si";
 import { MdOutlineFastfood } from "react-icons/md";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
+import Card from "@/childComponents/Card";
 
 const DashboardPage = () => {
   return (
@@ -66,7 +67,14 @@ const DashboardPage = () => {
           </Link>
         </div>
       </div>
-      <div className="w-full  bg-[#F5F5F7]"></div>
+      <div className="w-full bg-[#F5F5F7]">
+        <div className="w-full bg-white p-5"></div>
+        <div className="w-full flex gap-10">
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      </div>
     </div>
   );
 };
