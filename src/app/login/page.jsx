@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
   return (
@@ -12,7 +14,10 @@ const Login = () => {
               <h4 className="text-md text-gray-400 mt-2">Sign up for free</h4>
             </div>
             <div className="w-full">
-              <button className="w-full text-center border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2">
+              <button
+                className="w-full text-center border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2"
+                onClick={() => signIn("google")}
+              >
                 <Image
                   src="/assets/google_symbol.png"
                   alt=""

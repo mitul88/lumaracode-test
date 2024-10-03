@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { FaHome, FaList, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
@@ -5,8 +6,11 @@ import { SiSimpleanalytics } from "react-icons/si";
 import { MdOutlineFastfood } from "react-icons/md";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import Card from "@/childComponents/Card";
+import { useSession } from "next-auth/react";
 
 const DashboardPage = () => {
+  const { session } = useSession();
+
   return (
     <div className="w-full flex flex-row min-h-screen">
       <div className="w-[300px] p-10 bg-white">
@@ -68,7 +72,7 @@ const DashboardPage = () => {
         </div>
       </div>
       <div className="w-full bg-[#F5F5F7]">
-        <div className="w-full bg-white p-5"></div>
+        <div className="w-full bg-white p-5"> </div>
         <div className="w-full flex gap-10">
           <Card />
           <Card />
