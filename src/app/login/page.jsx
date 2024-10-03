@@ -1,9 +1,18 @@
-"use client";
 import Image from "next/image";
 import React from "react";
-import { signIn } from "next-auth/react";
+import LoginForm from "@/childComponents/LoginForm";
+import GoogleLoginButton from "@/childComponents/GoogleLoginButton";
+import { authOptions } from "@/utils/authOption";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-const Login = () => {
+const page = async () => {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+  // if (session) {
+  //   redirect("/dashboard");
+  // }
+
   return (
     <div className="w-full h-screen flex flex-col md:flex-row ">
       <div className="sm:w-full md:w-1/2 flex items-center justify-center">
@@ -13,44 +22,12 @@ const Login = () => {
               <h2 className="text-2xl font-bold">Join the green movement</h2>
               <h4 className="text-md text-gray-400 mt-2">Sign up for free</h4>
             </div>
-            <div className="w-full">
-              <button
-                className="w-full text-center border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2"
-                onClick={() => signIn("google")}
-              >
-                <Image
-                  src="/assets/google_symbol.png"
-                  alt=""
-                  width={25}
-                  height={25}
-                />
-                Continue with Google
-              </button>
-            </div>
+            <GoogleLoginButton />
           </div>
 
           <div className="my-5 text-center text-gray-400">Or</div>
 
-          <form>
-            <div className="flex flex-col gap-5">
-              <input
-                type="text"
-                placeholder="brian@example.com"
-                className="bg-transparent border border-gray-300 rounded-lg px-3 py-2"
-              />
-              <input
-                type="password"
-                placeholder="enter password"
-                className="bg-transparent border border-gray-300 rounded-lg px-3 py-2"
-              />
-              <button
-                type="submit"
-                className=" bg-green-800 text-white border-none rounded-lg py-2"
-              >
-                Continue with email
-              </button>
-            </div>
-          </form>
+          <LoginForm />
         </div>
       </div>
 
@@ -68,4 +45,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default page;
